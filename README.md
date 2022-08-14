@@ -16,7 +16,7 @@ save
 
 set new file must contain :
 
-```html
+```code
 include_once 'api/api_aapanel_mitha.php'; $aapanel = new aapanel_api;
 $aapanel->key = 'YOUR API KEY'; $aapanel->url = 'YOUR AAPANEL IP AND PORT';
 ```
