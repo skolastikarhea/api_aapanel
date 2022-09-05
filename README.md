@@ -8,7 +8,7 @@ if anyone wants to help develop, i'm very grateful
 
 ===================================
 
-for first time you must enable API (Settings > Global > API > enable)\
+for first time you must enable API in aapanel (Settings > Global > API > enable)\
 set > API secret key RESET > confirm\
 IP whitelist > input your public IP\
 save
