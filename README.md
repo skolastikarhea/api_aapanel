@@ -55,6 +55,22 @@ $aapanel->addSubDomain($subdomain,$maindomain,$iptarget);
 
 ```
 
+# Delete Sub Domain (must install DNS Manager with domain ready)
+
+```
+
+$aapanel->deleteSubDomain($subdomain, $mainDomain, $iptarget);
+
+```
+
+# Update Sub Domain (must install DNS Manager with domain ready)
+
+```
+
+$aapanel->modifySubDomain($subdomain, $mainDomain, $iptarget, $id)
+
+```
+
 # unzip file (file must exist in server)
 
 ```
@@ -98,5 +114,15 @@ $aapanel->disableSite($id_site,$domain);
 ```
 
 $aapanel->enableSite($id_site,$domain);
+
+```
+
+# import database file
+
+$file = complete path
+
+```
+
+$aapanel->importDbase($file, $dbasename);
 
 ```

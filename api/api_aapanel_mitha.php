@@ -300,7 +300,7 @@ class aapanel_api
         return json_decode($result, true);
     }
 
-    public function insertDbase($file, $dbasename)
+    public function importDbase($file, $dbasename)
     {
         $completeUrl    = $this->url . '/database?action=InputSql';
 
