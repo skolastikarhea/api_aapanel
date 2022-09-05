@@ -4,7 +4,7 @@ based from API documentation (unfinished) from aaPanel_Jose : https://forum.aapa
 first build : 08/14/2022\
 minor update : 09/05/2022\
 \
-if anyone wants to help develop, i'm very grateful\
+if anyone wants to help develop, i'm very grateful
 
 ===================================
 
