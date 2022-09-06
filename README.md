@@ -127,3 +127,13 @@ $file = complete path
 $aapanel->importDbase($file, $dbasename);
 
 ```
+
+# edit file body
+
+$file = complete path
+
+```
+
+$aapanel->safeFileBody($databody,$filepath);
+
+```

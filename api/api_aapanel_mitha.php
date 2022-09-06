@@ -313,4 +313,19 @@ class aapanel_api
 
         return json_decode($result, true);
     }
+
+    public function safeFileBody($datafile, $path)
+    {
+        $completeUrl    = $this->url . '/files?action=SaveFileBody';
+
+        $data               = $this->encrypt();
+
+        $data['data']       = $datafile;
+        $data['path']       = $path;
+        $data['encoding']   = 'utf-8';
+
+        $result         = $this->httpPostCookie($completeUrl, $data);
+
+        return json_decode($result, true);
+    }
 }
