@@ -98,7 +98,7 @@ $aapanel->applySSL($domain, $id_site);
 
 ```
 
-$aapanel->siteList($limit,$page,$search = null);
+$aapanel->siteList($limit,$page,$projectType,$search = null);
 
 ```
 
