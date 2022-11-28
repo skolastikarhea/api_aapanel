@@ -238,19 +238,36 @@ class aapanel_api
         return json_decode($result2, true);
     }
 
-    public function siteList($limit, $page, $search = null)
+    /*
+     * List of Your Website Project 
+     * boolean php | nodejs | all
+     * ================================
+     * TODO: Show all project by default
+     */
+    public function siteList($limit, $page, $projectType='php', $search = null)
     {
-        $completeUrl    = $this->url . '/data?action=getData';
+        // Show Default Project Site
+        switch ($projectType) {
+            case 'nodejs':
+                $completeUrl        = $this->url . '/project/nodejs/get_project_list';
+                break;
+            case 'php':
+                $completeUrl        = $this->url . '/data?action=getData';
+                break;
+            default:
+                $completeUrl        = $this->url . '/project/nodejs/get_project_list';
+                break;
+        }
 
         $data               = $this->encrypt();
 
-        $data['table']          = 'sites';
-        $data['limit']          = $limit;
-        $data['p']              = $page;
-        $data['search']          = $search;
-        $data['type']           = '-1';
-
-        $result         = $this->httpPostCookie($completeUrl, $data);
+        $data['table']      = 'sites';
+        $data['limit']      = $limit;
+        $data['p']          = $page;
+        $data['search']     = $search;
+        $data['type']       = '-1';
+        
+        $result             = $this->httpPostCookie($completeUrl, $data);
 
         return json_decode($result, true)['data'];
     }
