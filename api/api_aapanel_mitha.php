@@ -301,12 +301,12 @@ class aapanel_api
                 $data['data']   = json_encode(['project_name'=>$domain]);
                 break;
             case 'PHP':
-                $completeUrl    = $this->url . '/data?action=SiteStop';
+                $completeUrl    = $this->url . '/site?action=SiteStop';
                 $data['id']     = $idDomain;
                 $data['name']   = $domain;
                 break;
             default:
-                $completeUrl    = $this->url . '/data?action=SiteStop';
+                $completeUrl    = $this->url . '/site?action=SiteStop';
                 $data['id']     = $idDomain;
                 $data['name']   = $domain;
                 break;
@@ -329,12 +329,12 @@ class aapanel_api
                 $data['data']   = json_encode(['project_name'=>$domain]);
                 break;
             case 'PHP':
-                $completeUrl    = $this->url . '/data?action=SiteStart';
+                $completeUrl    = $this->url . '/site?action=SiteStart';
                 $data['id']     = $idDomain;
                 $data['name']   = $domain;
                 break;
             default:
-                $completeUrl    = $this->url . '/data?action=SiteStart';
+                $completeUrl    = $this->url . '/site?action=SiteStart';
                 $data['id']     = $idDomain;
                 $data['name']   = $domain;
                 break;
