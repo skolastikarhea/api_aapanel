@@ -238,21 +238,41 @@ class aapanel_api
         return json_decode($result2, true);
     }
 
-    public function siteList($limit, $page, $search = null)
+    /*
+     * List of Your Website Project 
+     * boolean php | nodejs | pm2 | all
+     * ================================
+     * TODO: Show all project by default
+     */
+    public function siteList($limit, $page, $projectType='php', $search = null)
     {
-        $completeUrl    = $this->url . '/data?action=getData';
+        // Show Default Project Site
+        switch ($projectType) {
+            case 'nodejs':
+                $completeUrl        = $this->url . '/project/nodejs/get_project_list';
+                break;
+            case 'php':
+                $completeUrl        = $this->url . '/data?action=getData';
+                break;
+            case 'pm2':
+                $completeUrl        = $this->url . '/plugin?action=a&s=List&name=pm2';
+                break;
+            default:
+                $completeUrl        = $this->url . '/project/nodejs/get_project_list';
+                break;
+        }
 
         $data               = $this->encrypt();
 
-        $data['table']          = 'sites';
-        $data['limit']          = $limit;
-        $data['p']              = $page;
-        $data['search']          = $search;
-        $data['type']           = '-1';
+        $data['table']      = 'sites';
+        $data['limit']      = $limit;
+        $data['p']          = $page;
+        $data['search']     = $search;
+        $data['type']       = '-1';
+        
+        $result             = $this->httpPostCookie($completeUrl, $data);
 
-        $result         = $this->httpPostCookie($completeUrl, $data);
-
-        return json_decode($result, true)['data'];
+        return json_decode($result, true);
     }
 
     public function deleteSite($webname, $id)
@@ -272,28 +292,56 @@ class aapanel_api
         return json_decode($result, true);
     }
 
-    public function disableSite($idDomain, $domain)
+    public function disableSite($idDomain, $domain, $projectType='PHP')
     {
-        $completeUrl    = $this->url . '/site?action=SiteStop';
+        // Move For 1st Encrypt Do.
+        $data           = $this->encrypt();
 
-        $data               = $this->encrypt();
+        // Show Default Project Site
+        switch ($projectType) {
+            case 'Node':
+                $completeUrl    = $this->url . '/project/nodejs/stop_project';
+                $data['data']   = json_encode(['project_name'=>$domain]);
+                break;
+            case 'PHP':
+                $completeUrl    = $this->url . '/site?action=SiteStop';
+                $data['id']     = $idDomain;
+                $data['name']   = $domain;
+                break;
+            default:
+                $completeUrl    = $this->url . '/site?action=SiteStop';
+                $data['id']     = $idDomain;
+                $data['name']   = $domain;
+                break;
+        }
 
-        $data['id']          = $idDomain;
-        $data['name']          = $domain;
-
-        $result         = $this->httpPostCookie($completeUrl, $data);
+        $result   = $this->httpPostCookie($completeUrl, $data); 
 
         return json_decode($result, true);
     }
 
-    public function enableSite($idDomain, $domain)
+    public function enableSite($idDomain, $domain, $projectType='PHP')
     {
-        $completeUrl    = $this->url . '/site?action=SiteStart';
+        // Move For 1st Encrypt Do.
+        $data           = $this->encrypt();
 
-        $data               = $this->encrypt();
-
-        $data['id']          = $idDomain;
-        $data['name']          = $domain;
+        // Show Default Project Site
+        switch ($projectType) {
+            case 'Node':
+                $completeUrl    = $this->url . '/project/nodejs/start_project';
+                $data['data']   = json_encode(['project_name'=>$domain]);
+                break;
+            case 'PHP':
+                $completeUrl    = $this->url . '/site?action=SiteStart';
+                $data['id']     = $idDomain;
+                $data['name']   = $domain;
+                break;
+            default:
+                $completeUrl    = $this->url . '/site?action=SiteStart';
+                $data['id']     = $idDomain;
+                $data['name']   = $domain;
+                break;
+        }
 
         $result         = $this->httpPostCookie($completeUrl, $data);
 
