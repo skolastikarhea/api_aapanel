@@ -240,7 +240,7 @@ class aapanel_api
 
     /*
      * List of Your Website Project 
-     * boolean php | nodejs | all
+     * boolean php | nodejs | pm2 | all
      * ================================
      * TODO: Show all project by default
      */
@@ -253,6 +253,9 @@ class aapanel_api
                 break;
             case 'php':
                 $completeUrl        = $this->url . '/data?action=getData';
+                break;
+            case 'pm2':
+                $completeUrl        = $this->url . '/plugin?action=a&s=List&name=pm2';
                 break;
             default:
                 $completeUrl        = $this->url . '/project/nodejs/get_project_list';
@@ -269,7 +272,7 @@ class aapanel_api
         
         $result             = $this->httpPostCookie($completeUrl, $data);
 
-        return json_decode($result, true)['data'];
+        return json_decode($result, true);
     }
 
     public function deleteSite($webname, $id)
